@@ -9,10 +9,10 @@ Author text(30),
 Price real);''')
 #this will add records into the table
 try:
-    cur.execute('''Insert into books values(3,'Think Python','Allen B. Drowney',475);''')
-    cur.execute('''Insert into books values(4,'C Programming','Dennis and Richie',300);''')
-    cur.execute('''Insert into books values(5,'Guide to network Programming','Beej',550);''')
-    cur.execute('''Insert into books values(1,'Git magic','Ben Lynn',500);''')
+    cur.execute('''Insert into books values('Think Python','Allen B. Drowney',475);''')
+    cur.execute('''Insert into books values('C Programming','Dennis and Richie',300);''')
+    cur.execute('''Insert into books values('Guide to network Programming','Beej',550);''')
+    cur.execute('''Insert into books values('Git magic','Ben Lynn',500);''')
     db.commit()
 except:
     db.rollback()

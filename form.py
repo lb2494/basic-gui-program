@@ -60,6 +60,8 @@ class Ui_Form(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem1)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.b1.clicked.connect(self.bookprice)
+        self.b2.clicked.connect(self.totalprice)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -73,7 +75,33 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "Quantity"))
         self.b2.setText(_translate("Form", "Find Total"))
         self.label_4.setText(_translate("Form", "Total"))
-
+        
+    def bookprice(self):
+        import sqlite3 
+        db=sqlite3.connect("listofbooks.db")
+        cur=db.cursor()
+        nm=self.t1.text()
+        cur.execute("select * from books where Title = '"+nm+"';")
+        record=cur.fetchone()
+        if record==None:
+            self.t2.setText("No Book found")
+        else:
+            prc=float(record[3])
+            self.t2.setText(str(prc))
+    def totalprice(self):
+        import sqlite3 
+        db=sqlite3.connect("listofbooks.db")
+        cur=db.cursor()
+        nm=self.t1.text()
+        cur.execute("select * from books where Title = '"+nm+"';")
+        record=cur.fetchone()
+        if record==None:
+            self.t2.setText("No Book found")
+        else:
+            prc=float(record[3])
+            prc=prc*float(self.t3.text())
+            self.t4.setText(str(prc))
+               
 
 if __name__ == "__main__":
     import sys
