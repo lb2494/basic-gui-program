@@ -90,18 +90,9 @@ class Ui_Form(object):
             prc=float(record[3])
             self.t2.setText(str(prc))
     def totalprice(self):
-        import sqlite3 
-        db=sqlite3.connect("listofbooks.db")
-        cur=db.cursor()
-        nm=self.t1.text()
-        cur.execute("select * from books where Title = '"+nm+"';")
-        record=cur.fetchone()
-        if record==None:
-            self.t2.setText("No Book found")
-        else:
-            prc=float(record[3])
-            prc=prc*float(self.t3.text())
-            self.t4.setText(str(prc))
+        prc=float(self.t2.text())       
+        prc=prc*float(self.t3.text())
+        self.t4.setText(str(prc))
                
 
 if __name__ == "__main__":
