@@ -62,6 +62,7 @@ class Ui_Form(object):
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.b1.clicked.connect(self.bookprice)
         self.b2.clicked.connect(self.totalprice)
+        self.t3.setValidator(QtGui.QIntValidator())
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
