@@ -63,6 +63,7 @@ class Ui_Form(object):
         self.b1.clicked.connect(self.bookprice)
         self.b2.clicked.connect(self.totalprice)
         self.t3.setValidator(QtGui.QIntValidator())
+        self.t1.textChanged.connect(self.clearall)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -93,7 +94,10 @@ class Ui_Form(object):
         prc=float(self.t2.text())       
         prc=prc*float(self.t3.text())
         self.t4.setText(str(prc))
-               
+    def clearall(self):
+        self.t2.setText("")
+        self.t3.setText("")
+        self.t4.setText("")               
 
 if __name__ == "__main__":
     import sys
